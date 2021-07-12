@@ -693,12 +693,13 @@ document.
         Let |pullAlgorithm| be the following steps:
         <ol>
           <li>
-            Let |desiredSize| be the [=ReadableStream/current requested number of bytes=]
-            for [=this=].{{[[readable]]}}.
-          <li>
-            If |desiredSize| is null, then set |desiredSize| to the
+            Let |desiredSize| be the
             [=ReadableStream/desired size to fill up to the high water mark=] for
             [=this=].{{[[readable]]}}.
+          <li>
+            If [=this=].{{[[readable]]}}'s [=ReadableStream/current BYOB request view=]
+            is non-null, then set |desiredSize| to [=this=].{{[[readable]]}}'s
+            [=ReadableStream/current BYOB request view=]'s [=BufferSource/byte length=].
           <li>
             Run the following steps [=in parallel=]:
             <ol>
@@ -712,8 +713,22 @@ document.
                 following steps:
                 <ol>
                   <li>
-                    If no errors were encountered, then [=ReadableStream/enqueue bytes=] into
-                    [=this=].{{[[readable]]}} given |bytes|.
+                    If no errors were encountered, then:
+                    <ol>
+                      <li>If [=this=].{{[[readable]]}}'s
+                      [=ReadableStream/current BYOB request view=] is non-null,
+                      then [=ArrayBufferView/write=] |bytes| into
+                      [=this=].{{[[readable]]}}'s
+                      [=ReadableStream/current BYOB request view=], and set
+                      |view| to [=this=].{{[[readable]]}}'s
+                      [=ReadableStream/current BYOB request view=].
+                      <li>Otherwise, set |view| to the result of
+                      [=ArrayBufferView/create|creating=] a {{Uint8Array}} from
+                      |bytes| in [=this=]'s [=relevant Realm=].
+                      <li>[=ReadableStream/Enqueue bytes=] into
+                      [=this=].{{[[readable]]}} given |view|.
+                    </ol>
+                  </li>
                   <li>
                     If a buffer overrun condition was encountered, invoke
                     [=ReadableStream/error=] on [=this=].{{[[readable]]}} with a
@@ -787,11 +802,11 @@ document.
 
       <li>
         [=ReadableStream/Set up with byte reading support=] |stream| with
-        <i><a href="https://streams.spec.whatwg.org/#readablestream-set-up-with-byte-reading-support-pullalgorithm">pullAlgorithm</a></i>
+        <i>[=ReadableStream/set up with byte reading support/pullAlgorithm=]</i>
         set to |pullAlgorithm|,
-        <i><a href="https://streams.spec.whatwg.org/#readablestream-set-up-with-byte-reading-support-cancelalgorithm">cancelAlgorithm</a></i>
+        <i>[=ReadableStream/set up with byte reading support/cancelAlgorithm=]</i>
         set to |cancelAlgorithm|, and
-        <i><a href="https://streams.spec.whatwg.org/#readablestream-set-up-with-byte-reading-support-highwatermark">highWaterMark</a></i>
+        <i>[=ReadableStream/set up with byte reading support/highWaterMark=]</i>
         set to [=this=].{{[[bufferSize]]}}.
       <li>Set [=this=].{{[[readable]]}} to |stream|.
       <li>Return |stream|.
