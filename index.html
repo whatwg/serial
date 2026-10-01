@@ -405,11 +405,12 @@
                 remembers ports that have been allowed from previous calls of
                 {{Serial/requestPort()}} from previous times the user has
                 visited the same site. Implementations should take caution that
-                a device will not always have the same port name, as this is up
-                to the operating system, and thus there is a danger that
-                allowing access to a previously allowed port may grant access
-                to a different device than the user intended. As such,
-                implementations should communicate this risk to the user.
+                OS-provided device names may or may not allow accurate
+                reidentification of a device between sessions and should only
+                use properties which are highly likely to identify a specific
+                device when remembering a user's permission decision. When no
+                such identifier is present the permission should be time or
+                session-limited.
               </div>
               <li>Let |ports| be the sequence of the {{SerialPort}}s
               representing the ports in |availablePorts|.
