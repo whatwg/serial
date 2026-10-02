@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: w3c/spec-prod@v2
         with:
-          SOURCE: index.html
-          TOOLCHAIN: respec
+          SOURCE: index.bs
+          DESTINATION: index.html
+          TOOLCHAIN: bikeshed
           GH_PAGES_BRANCH: gh-pages
