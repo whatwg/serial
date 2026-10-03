@@ -1,21 +1,18 @@
 <pre class="metadata">
-Title: Web Serial API
-Status: CG-DRAFT
-Group: wicg
-ED: https://wicg.github.io/serial/
+Group: WHATWG
+H1: Serial
 Shortname: serial
-Level: none
-Editor: See contributors on GH, , https://github.com/wicg/serial/graphs/contributors
-Repository: wicg/serial
+Repository: whatwg/serial
+Editor: Reilly Grant, Google https://google.com, reillyg@google.com, https://github.com/reillyeon
 Logo: images/logo_serial.svg
 Abstract:
   The <cite>Serial API</cite> provides a way for websites to read and write
   from a serial device through script. Such an API would bridge the web and
   the physical world, by allowing documents to communicate with devices
   such as microcontrollers, 3D printers, and other serial devices. There is
-  also a companion <a href="https://github.com/WICG/serial/blob/main/EXPLAINER.md">explainer</a>
+  also a companion <a href="https://github.com/whatwg/serial/blob/main/EXPLAINER.md">explainer</a>
   document.
-Status Text: This is a work in progress. All <a href="https://github.com/WICG/serial">contributions</a> welcome.
+Status: LS
 Markup Shorthands: css no, markdown yes
 </pre>
 
@@ -67,11 +64,11 @@ interface Serial : EventTarget {
 
 ## <dfn method for="Serial" lt="requestPort(options)|requestPort()">requestPort()</dfn> method ## {#requestport-method}
 
-<div class="example">
+<div class="example" id="example-request-port">
 When the user first visits a site it will not have permission to access any
-serial devices. A site must first call {{Serial/requestPort()}}. This call
+serial devices. A site has to first call {{Serial/requestPort()}}. This call
 gives the browser the opportunity to prompt the user for which device the site
-should be allowed to control. If the site is designed to work with a
+can be allowed to control. If the site is designed to work with a
 particular device which is always connected via USB the site can provide a
 filter restricting the devices the user can select to only those that would be
 compatible. For example, a site which programs Arduino-powered robots could
@@ -84,7 +81,7 @@ const port = await navigator.serial.requestPort({ filters: [filter] });
 </xmp>
 
 If on the other hand the site expects to be used with a wide variety of
-devices or devices connected through a USB to serial converter it may specify
+devices or devices connected through a USB to serial converter it can specify
 no filter at all and rely on the user to select the appropriate device,
 
 <xmp highlight="js">
@@ -92,7 +89,7 @@ const port = await navigator.serial.requestPort();
 </xmp>
 
 Asking the user to choose a port requires showing a prompt to the user and so
-the site must have [=transient activation=] from something like the user
+the site has to have [=transient activation=] from something like the user
 clicking a button.
 
 <xmp highlight="html">
@@ -111,8 +108,8 @@ connectButton.addEventListener('click', () => {
 });
 </xmp>
 
-The user may choose not to select a device, in which case the {{Promise}} will
-be rejected with a "{{NotFoundError}}" {{DOMException}} that the site must
+The user can choose not to select a device, in which case the {{Promise}} will
+be rejected with a "{{NotFoundError}}" {{DOMException}} that the site has to
 handle.
 </div>
 
@@ -141,7 +138,7 @@ The {{Serial/requestPort()}} method steps are:
         Note: This check implements the combined rule that a
         {{SerialPortFilter}} cannot be empty and if
         {{SerialPortFilter/usbProductId}} is specified then
-        {{SerialPortFilter/usbVendorId}} must also be specified.
+        {{SerialPortFilter/usbVendorId}} <span class="allow-2119">must</span> also be specified.
 1.  Run the following steps [=in parallel=]:
     1.  Let |allPorts| be an empty [=list=].
     1.  [=list/For each=] Bluetooth device registered with the system:
@@ -253,8 +250,8 @@ filter</dfn> in a sequence of {{SerialPortFilter}} if these steps return `true`:
 
 ## <dfn method for="Serial">getPorts()</dfn> method ## {#getports-method}
 
-<div class="example">
-If a serial port is provided by a USB device then that device may be connected
+<div class="example" id="example-get-ports">
+If a serial port is provided by a USB device then that device can be connected
 or disconnected from the system. Once a site has permission to access a port
 it can receive these events and query for the set of connected devices it
 currently has access to.
@@ -479,10 +476,10 @@ dictionary SerialPortInfo {
 
 ## <dfn method for="SerialPort" lt="open(options)|open()">open()</dfn> method ## {#open-method}
 
-<div class="example">
-Before communicating on a serial port it must be opened. Opening the port
+<div class="example" id="example-open">
+Before communicating on a serial port it has to be opened. Opening the port
 allows the site to specify the necessary parameters which control how data is
-transmitted and received. Developers should check the documentation for the
+transmitted and received. Developers need to check the documentation for the
 device they are connecting to for the appropriate parameters.
 
 <xmp highlight="js">
@@ -549,7 +546,7 @@ dictionary SerialOptions {
     A positive, non-zero value indicating the baud rate at which serial
     communication should be established.
 
-    Note: {{SerialOptions/baudRate}} is the only required member of this
+    Note: {{SerialOptions/baudRate}} is the only <span class="allow-2119">required</span> member of this
     dictionary. While there are common default for other connection parameters
     it is important for developers to consider and consult with the
     documentation for devices they intend to connect to determine the correct
@@ -702,7 +699,7 @@ boundaries is left as an exercise for the reader.
 
 While the {{ReadableStreamDefaultReader/read()}} method is asynchronous and
 does not block execution, in code using async/await syntax it can seem as if
-it does. In this situation it may be helpful to implement a timeout which will
+it does. In this situation it might be helpful to implement a timeout which will
 allow the code to continue execution if no data is received for a period of
 time. The example below uses the {{ReadableStreamDefaultReader/releaseLock()}}
 method to interrupt a call to {{ReadableStreamDefaultReader/read()}} after a
@@ -748,7 +745,7 @@ The {{SerialPort/readable}} getter steps are:
         1.  Invoke the operating system to read up to |desiredSize| bytes from
             the port, putting the result in the [=byte sequence=] |bytes|.
 
-            Note: [=this=].{{SerialPort/[[state]]}} becoming `"forgotten"` must
+            Note: [=this=].{{SerialPort/[[state]]}} becoming `"forgotten"` can
             be treated as if |the port was disconnected|.
         1.  [=Queue a global task=] on the [=relevant global object=] of
             [=this=] using the [=serial port task source=] to run the following
@@ -828,7 +825,7 @@ To <dfn>handle closing the readable stream</dfn> perform the following steps:
 
 ## <dfn attribute for="SerialPort">writable</dfn> attribute ## {#writable-attribute}
 
-<div class="example">
+<div class="example" id="example-writable">
 To write individual chunks of data to the port a
 {{WritableStreamDefaultWriter}} can be created and released as necessary. This
 example uses a `TextEncoder` to encode a {{DOMString}} as the necessary
@@ -872,11 +869,11 @@ The {{SerialPort/writable}} getter steps are:
         1.  Invoke the operating system to write |bytes| to the port.
             Alternately, store the chunk for future coalescing.
 
-            Note: The operating system may return from this operation once
+            Note: The operating system can return from this operation once
             |bytes| has been queued for transmission rather than after it has
             been transmitted.
 
-            Note: [=this=].{{SerialPort/[[state]]}} becoming `"forgotten"` must
+            Note: [=this=].{{SerialPort/[[state]]}} becoming `"forgotten"` can
             be treated as if |the port was disconnected|.
         1.  [=Queue a global task=] on the [=relevant global object=] of
             [=this=] using the [=serial port task source=] to run the following
@@ -952,7 +949,7 @@ To <dfn>handle closing the writable stream</dfn> perform the following steps:
 
 ## <dfn method for="SerialPort" lt="setSignals(signals)|setSignals()">setSignals()</dfn> method ## {#setsignals-method}
 
-<div class="example">
+<div class="example" id="example-set-signals">
 Serial ports include a number of additional signals for device detection and
 flow control which can be queried and set explicitly. As an example,
 programming some micro-controllers first requires entering a "programming"
@@ -1084,7 +1081,7 @@ dictionary SerialInputSignals {
 ## <dfn method for="SerialPort">close()</dfn> method ## {#close-method}
 
 <div id="close-example" class="example">
-When communication with the port is no longer required it can be closed and
+When communication with the port is no longer needed it can be closed and
 the associated resources released by the system.
 
 Calling `port.`{{SerialPort/close()}} implicitly invokes
@@ -1096,7 +1093,7 @@ any buffered data. If the application has called
 locked and the port cannot be closed. This forces the developer to decide how
 to handle any read or write operations that are in progress. For example, to
 ensure that all buffered data has been transmitted before the port is closed
-the application must await the {{Promise}} returned by
+the application has to await the {{Promise}} returned by
 `writer.`{{WritableStreamDefaultWriter/close()}}.
 
 <xmp highlight="js">
@@ -1113,7 +1110,7 @@ To discard any unsent data the application could instead call
 If a {{TransformStream}} is being piped to `port`.{{SerialPort/writable}} then
 waiting for the {{Promise}} returned by
 `writer.`{{WritableStreamDefaultWriter/close()}} to resolve is insufficient.
-The application must wait for the pipe chain to close by waiting for the
+The application has to wait for the pipe chain to close by waiting for the
 {{Promise}} returned by {{ReadableStream/pipeTo()}} to resolve instead.
 
 <xmp highlight="js">
@@ -1127,7 +1124,7 @@ await port.close();
 </xmp>
 
 If a loop is being used to read chunks from the port, as is done in
-<a href="#readable-example">Example 4</a>, then it must be exited before
+<a href="#readable-example">Example 4</a>, then it has to be exited before
 calling `port.`{{SerialPort/close()}}.
 
 <xmp highlight="js">
@@ -1223,7 +1220,7 @@ The {{SerialPort/close()}} method steps are:
 
 ## <dfn method for="SerialPort">forget()</dfn> method ## {#forget-method}
 
-<div class="example">
+<div class="example" id="example-forget">
 It is posssible to voluntarily revoke a permission to a serial port that was
 granted by a user.
 
@@ -1257,7 +1254,7 @@ The {{SerialPort/forget()}} method steps are:
 # Blocklist # {#blocklist}
 
 This specification relies on a blocklist file in the
-<a href="https://github.com/WICG/serial">https://github.com/WICG/serial</a>
+<a href="https://github.com/whatwg/serial">https://github.com/whatwg/serial</a>
 repository to restrict the set of ports a website can access.
 
 The result of <dfn>parsing the Bluetooth service class ID blocklist</dfn> at a
@@ -1275,7 +1272,7 @@ class UUID</dfn> if the following steps return `true`:
     {{BluetoothUUID}}.{{BluetoothUUID/getService()}} with |serviceUuid|.
 1.  Let |blocklist| be the result of [=parsing the Bluetooth service class ID
     blocklist=] at
-    <a href="https://github.com/WICG/serial/blob/main/bluetooth-service-blocklist.txt">https://github.com/WICG/serial/blob/main/bluetooth-service-blocklist.txt</a>.
+    <a href="https://github.com/whatwg/serial/blob/main/bluetooth-service-blocklist.txt">https://github.com/whatwg/serial/blob/main/bluetooth-service-blocklist.txt</a>.
 1.  If |blocklist| [=list/contains=] |uuid|, return `true`.
 1.  If |uuid| [=string/is=] the [=Serial Port Profile service class ID=], return
     `false`.
@@ -1301,7 +1298,7 @@ The [=policy-controlled feature/default allowlist=] for this feature is
 
 <em>This section is non-normative.</em>
 
-This API poses similar a security risk to [[WEB-BLUETOOTH]] and [[WEBUSB]] and
+This API poses similar a security risk to [[WEBBLUETOOTH]] and [[WEBUSB]] and
 so lessons from those are applicable here. The primary threats are:
 
 *   A malicious site that has tricked the user into granting it access to a
@@ -1366,7 +1363,7 @@ User agents can implement additional mechanisms to control access to devices:
     management system to deploy updates to this list on the fly to block an
     active attack.
 
-Implementations of [[WEB-BLUETOOTH]] and [[WEBUSB]] have experimented with
+Implementations of [[WEBBLUETOOTH]] and [[WEBUSB]] have experimented with
 these mitigations however there are limits to their effectiveness. First, it is
 difficult to define whether a device is exploitable. For example, this API will
 allow a site to upload firmware to a microcontroller development board. This is
