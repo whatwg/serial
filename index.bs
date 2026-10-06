@@ -2,7 +2,6 @@
 Group: WHATWG
 H1: Serial
 Shortname: serial
-Editor: Reilly Grant, Google https://google.com, reillyg@google.com, https://github.com/reillyeon
 Abstract:
   The <cite>Serial API</cite> provides a way for websites to read and write
   from a serial device through script. Such an API would bridge the web and
@@ -1423,3 +1422,34 @@ understand the ways in which granting access to a device breaks traditional
 isolation boundaries in the web security model. Security UI and documentation
 should explain that granting a site access to a device could give the site full
 control over the device and any data contained within.
+
+<h2 id=acknowledgments class=no-num>Acknowledgments</h2>
+
+<p>Thanks to
+Anatol Ulrich<!-- spookyvision; GitHub -->,
+Chris Mumford<!-- cmumford; GitHub -->,
+Clément Menard<!-- Clemenard; GitHub -->,
+Domenic Denicola<!-- domenic; GitHub -->,
+Dominique Hazael-Massieux<!-- dontcallmedom; GitHub -->,
+Florian Loitsch<!-- floitsch; GitHub -->,
+Florian Scholz<!-- Elchi3; GitHub -->,
+Francis Gulotta<!-- reconbot; GitHub -->,
+François Beaufort<!-- beaufortfrancois; GitHub -->,
+Jack Hsieh<!-- chengweih001; GitHub -->,
+Keavon Chambers<!-- Keavon; GitHub -->,
+Kenneth Rohde Christiansen<!-- kenchris; GitHub -->,
+Marcos Cáceres<!-- marcoscaceres; GitHub -->,
+Matt Reynolds<!-- nondebug; GitHub -->,
+Jesse Melhuish<!-- melhuishj; GitHub -->,
+Michael Kohler<!-- MichaelKohler; GitHub -->,
+Ms2ger<!-- Ms2ger; GitHub -->,
+Rick Waldron<!-- rwaldron; GitHub -->,
+Sankha Narayan Guria<!-- ngsankha; GitHub -->,
+Simon Pieters<!-- zcorpan; GitHub -->,
+Suz Hinton<!-- noopkat; GitHub -->,
+Travis Leithead<!-- travisleithead; GitHub -->, and
+Vincent Scheib<!-- scheib; GitHub -->
+for being awesome.
+
+<p>This standard is written by <a href=https://reilly.io lang=en>Reilly Grant</a>
+(<a href=https://www.google.com/>Google</a>, <a href=mailto:reillyg@google.com>reillyg@google.com</a>).
