@@ -2,9 +2,7 @@
 Group: WHATWG
 H1: Serial
 Shortname: serial
-Repository: whatwg/serial
 Editor: Reilly Grant, Google https://google.com, reillyg@google.com, https://github.com/reillyeon
-Logo: images/logo_serial.svg
 Abstract:
   The <cite>Serial API</cite> provides a way for websites to read and write
   from a serial device through script. Such an API would bridge the web and
@@ -12,7 +10,6 @@ Abstract:
   such as microcontrollers, 3D printers, and other serial devices. There is
   also a companion <a href="https://github.com/whatwg/serial/blob/main/EXPLAINER.md">explainer</a>
   document.
-Status: LS
 Markup Shorthands: css no, markdown yes
 </pre>
 
