@@ -1,4 +1,4 @@
-This repository hosts the [Serial Standard](https://serial.spec.whatwg.org/). It is one of [many web standards](https://spec.whatwg.org/) developed by the [WHATWG community](https://whatwg.org/).
+This repository hosts the [WebSerial Standard](https://serial.spec.whatwg.org/). It is one of [many web standards](https://spec.whatwg.org/) developed by the [WHATWG community](https://whatwg.org/).
 
 ## Explainer
 
@@ -21,9 +21,9 @@ We are committed to providing a friendly, safe, and welcoming environment for al
 
 ## Contribution opportunities
 
-Folks notice minor and larger issues with the Serial Standard all the time and we'd love your help fixing those. Pull requests for typographical and grammar errors are also most welcome.
+Folks notice minor and larger issues with the WebSerial Standard all the time and we'd love your help fixing those. Pull requests for typographical and grammar errors are also most welcome.
 
-Issues labeled ["good first issue"](https://github.com/whatwg/serial/labels/good%20first%20issue) are a good place to get a taste for editing the Serial Standard. Note that we don't assign issues and there's no reason to ask for availability either, just provide a pull request.
+Issues labeled ["good first issue"](https://github.com/whatwg/serial/labels/good%20first%20issue) are a good place to get a taste for editing the WebSerial Standard. Note that we don't assign issues and there's no reason to ask for availability either, just provide a pull request.
 
 If you are thinking of suggesting a new feature, read through the [FAQ](https://whatwg.org/faq) and [Working Mode](https://whatwg.org/working-mode) documents to get yourself familiarized with the process.
 
@@ -35,11 +35,11 @@ In short, change `index.bs` and submit your patch, with a [good commit message](
 
 Please add your name to the Acknowledgments section in your first pull request, even for trivial fixes. The names are sorted lexicographically.
 
-To ensure your patch meets all the necessary requirements, please also see the [Contributor Guidelines](https://github.com/whatwg/meta/blob/main/CONTRIBUTING.md). Editors of the Serial Standard are expected to follow the [Maintainer Guidelines](https://github.com/whatwg/meta/blob/main/MAINTAINERS.md).
+To ensure your patch meets all the necessary requirements, please also see the [Contributor Guidelines](https://github.com/whatwg/meta/blob/main/CONTRIBUTING.md). Editors of the WebSerial Standard are expected to follow the [Maintainer Guidelines](https://github.com/whatwg/meta/blob/main/MAINTAINERS.md).
 
 ## Tests
 
-Tests are an essential part of the standardization process and will need to be created or adjusted as changes to the standard are made. Tests for the Serial Standard can be found in the `serial/` directory of [`web-platform-tests/wpt`](https://github.com/web-platform-tests/wpt).
+Tests are an essential part of the standardization process and will need to be created or adjusted as changes to the standard are made. Tests for the WebSerial Standard can be found in the `serial/` directory of [`web-platform-tests/wpt`](https://github.com/web-platform-tests/wpt).
 
 A dashboard showing the tests running against browser engines can be seen at [wpt.fyi/results/serial](https://wpt.fyi/results/serial).
 

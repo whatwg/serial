@@ -1,5 +1,5 @@
 <!--
-Thank you for contributing to the Serial Standard! Please describe the change you are making and complete the checklist below if your change is not editorial.
+Thank you for contributing to the WebSerial Standard! Please describe the change you are making and complete the checklist below if your change is not editorial.
 
 When you submit this PR, and each time you edit this comment (including checking a checkbox through the UI!), PR Preview will run and update it. As such make any edits in one go and only after PR Preview has run.
 

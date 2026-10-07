@@ -4,7 +4,7 @@ Questions pulled from the [Self-Review Questionaire on Security and Privacy](htt
 
 ## What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?
 
-This questionnaire is specifically about the "Bluetooth RFCOMM in Web Serial API" feature which enables applications to access serial interfaces on Bluetooth devices. See EXPLAINER_BLUETOOTH.md.
+This questionnaire is specifically about the "Bluetooth RFCOMM in WebSerial API" feature which enables applications to access serial interfaces on Bluetooth devices. See EXPLAINER_BLUETOOTH.md.
 
 Much of the same information is exposed for Bluetooth RFCOMM serial ports as for non-Bluetooth serial ports. Copied from security-privacy-questionnaire.md:
 
@@ -23,7 +23,7 @@ Similar to other device identifiers like USB vendor and product IDs, service cla
 
 ## Do features in your specification expose the minimum amount of information necessary to enable their intended uses?
 
-Web Serial API uses a permission prompt to gate access to device information:
+WebSerial API uses a permission prompt to gate access to device information:
 
 > The specification minimizes the information exposed to a site by gating all access to devices and their properties behind a permission request that requires the user to select a single device. This mitigates "drive by" attacks which could attempt to fingerprint a user by detecting the types of devices they have connected.
 
@@ -108,7 +108,7 @@ The answer is the same as the main security-privacy-questionnaire.md:
 
 ## Does this specification have both "Security Considerations" and "Privacy Considerations" sections?
 
-Yes, see [Web Serial API](https://wicg.github.io/serial/) for general considerations and EXPLAINER_BLUETOOTH.md for considerations specific to Bluetooth RFCOMM serial ports.
+Yes, see [WebSerial API](https://wicg.github.io/serial/) for general considerations and EXPLAINER_BLUETOOTH.md for considerations specific to Bluetooth RFCOMM serial ports.
 
 ## Do features in your specification enable origins to downgrade default security protections?
 
@@ -116,7 +116,7 @@ No.
 
 ## How does your feature handle non-"fully active" documents?
 
-The Web Serial API specification has not yet been updated to handle back/forward cache.
+The WebSerial API specification has not yet been updated to handle back/forward cache.
 
 ## What should this questionnaire have asked?
 
