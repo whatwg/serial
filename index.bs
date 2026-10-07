@@ -1,9 +1,9 @@
 <pre class="metadata">
 Group: WHATWG
-H1: Serial
+H1: WebSerial
 Shortname: serial
 Abstract:
-  The <cite>Serial API</cite> provides a way for websites to read and write
+  The <cite>WebSerial API</cite> provides a way for websites to read and write
   from a serial device through script. Such an API would bridge the web and
   the physical world, by allowing documents to communicate with devices
   such as microcontrollers, 3D printers, and other serial devices. There is
