@@ -1,5 +1,5 @@
 # This file holds a list of Bluetooth custom service UUIDs that websites using
-# the Web Serial API are forbidden from accessing.
+# the WebSerial API are forbidden from accessing.
 #
 # The format of each line is a 128-bit service class UUID rendered as a
 # hexadecimal string with the format `01234567-89ab-cdef-0123-456789abcdef`.

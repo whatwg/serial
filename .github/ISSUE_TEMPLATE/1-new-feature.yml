@@ -1,5 +1,5 @@
 name: New feature
-description: Request a new feature in the Serial Standard.
+description: Request a new feature in the WebSerial Standard.
 labels: ["addition/proposal", "needs implementer interest"]
 body:
   - type: markdown
@@ -24,4 +24,4 @@ body:
       label: "Anything else?"
   - type: markdown
     attributes:
-      value: "Thank you for taking the time to improve the Serial Standard!"
+      value: "Thank you for taking the time to improve the WebSerial Standard!"

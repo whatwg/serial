@@ -1,5 +1,5 @@
 name: New issue
-description: File a new issue against the Serial Standard.
+description: File a new issue against the WebSerial Standard.
 body:
   - type: markdown
     attributes:
@@ -9,9 +9,9 @@ body:
         If at any point you have questions, please reach out to us on [Chat](https://whatwg.org/chat).
   - type: textarea
     attributes:
-      label: "What is the issue with the Serial Standard?"
+      label: "What is the issue with the WebSerial Standard?"
     validations:
       required: true
   - type: markdown
     attributes:
-      value: "Thank you for taking the time to improve the Serial Standard!"
+      value: "Thank you for taking the time to improve the WebSerial Standard!"

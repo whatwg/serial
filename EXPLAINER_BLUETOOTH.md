@@ -1,6 +1,6 @@
 ## Serial via Bluetooth Classic Explainer
 
-A proposal to add support for Bluetooth serial ports to the Web Serial API.
+A proposal to add support for Bluetooth serial ports to the WebSerial API.
 
 ## Motivation
 
@@ -15,22 +15,22 @@ RS-232 serial ports.
 
 New hardware is still being introduced with performance characteristics that
 need the latency & bandwidth of SPP and RFCOMM. We can address this need by
-exposing serial connections via the Web Serial API.
+exposing serial connections via the WebSerial API.
 
 Some use cases which consistently come up requiring Bluetooth serial support,
 such as:
 
 1. Bluetooth devices that expose a serial interface using the standard Serial
    Port service are supported by some platforms but the experience is
-   inconsistent without explicit support from the Web Serial API.
+   inconsistent without explicit support from the WebSerial API.
 2. Devices may implement an RFCOMM serial service without using the standard
-   Serial Port service. Explicit support from the Web Serial API is needed for
+   Serial Port service. Explicit support from the WebSerial API is needed for
    these devices.
 3. Consumers and device manufacturers that augment existing wired serial devices
    with Bluetooth capabilities using drop-in modules that expose a serial
    interface.
 
-The Web Serial API can currently utilize Bluetooth serial ports, but with a few
+The WebSerial API can currently utilize Bluetooth serial ports, but with a few
 caveats:
 
 1. The Bluetooth device must first be bonded (often called "paired") before
@@ -63,7 +63,7 @@ Bluetooth serial interfaces is seen as a special case as it is so frequently
 requested by developers needing basic serial port support with
 no simple alternative in BLE.
 
-In short, this feature is a natural extension to the Web Serial API, and will
+In short, this feature is a natural extension to the WebSerial API, and will
 minimize requests for other classic profiles.
 
 ## Support for unmapped serial ports
@@ -170,7 +170,7 @@ Opening a mapped port will return a bluetoothServiceClassId of `0x1101`.
 
 ### Port Persistence
 
-The Web Serial API remembers serial ports granted access by
+The WebSerial API remembers serial ports granted access by
 `Serial.requestPort()`. These can be retrieved by the page via the
 [`Serial.getPorts()`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/getPorts)
 method.
@@ -203,8 +203,8 @@ system has any active connections to the wireless device.
 into and out of the logically connected state.
 
 Due to the transient nature of Bluetooth serial ports, and the lack of reliable
-`onconnect`/`ondisconnect` events, applications will fall back to other Web
-Serial methods. For example `ReadableStreamDefaultReader.read()` will fail if
+`onconnect`/`ondisconnect` events, applications will fall back to other
+WebSerial methods. For example `ReadableStreamDefaultReader.read()` will fail if
 called when the device is out of range.
 
 ### Port availability
@@ -240,9 +240,9 @@ for (let port of ports) {
 
 ## Security Considerations
 
-This API change poses security risks that are a superset of those of the Web
-Serial API. It is vulnerable to all risks described in
-[Web Serial Explainer Security considerations](https://github.com/WICG/serial/blob/main/EXPLAINER.md#security-considerations).
+This API change poses security risks that are a superset of those of the
+WebSerial API. It is vulnerable to all risks described in
+[WebSerial Explainer Security considerations](https://github.com/WICG/serial/blob/main/EXPLAINER.md#security-considerations).
 
 As stated above, Bluetooth serial ports can be used today on most operating
 systems, namely Windows, macOS, and Linux (with more effort). This proposal will
@@ -254,11 +254,11 @@ it possible on other platforms.
 The new security consideration is from the proposal to add support for serial
 ports implemented by non-standard Bluetooth services (see
 [Non-standard Service Class ID’s](#non-standard-service-class-ids) above).
-There is no current ability to do this from Web Serial. The same vulnerabilities
+There is no current ability to do this from WebSerial. The same vulnerabilities
 will be introduced by accessing non-standard serial ports as exist today for
 mapped ports.
 
-Like Web Serial, the primary mitigation is a permissions model that requires the
+Like WebSerial, the primary mitigation is a permissions model that requires the
 user to explicitly give access to a device. Additionally it must also be a
 device to which the host computer is currently bonded.
 
@@ -267,7 +267,7 @@ attacks:
 
 * All [Bluetooth specified services](https://www.bluetooth.com/specifications/specs/)
   will be blocked except SPP. Only vendor defined service class ID’s will be
-  exposed to Web Serial.
+  exposed to WebSerial.
 * Enterprise policy settings so that concerned systems administrators can
   disable non-standard serial port services throughout their organization. This
   default could be overridden for particular trusted origins.
@@ -281,7 +281,7 @@ The page, when filtering for UUID’s, or by obtaining them via
 it has been connected.
 
 As mentioned in the
-[Web Serial Explainer Privacy considerations](https://github.com/WICG/serial/blob/main/EXPLAINER.md#privacy-considerations)
+[WebSerial Explainer Privacy considerations](https://github.com/WICG/serial/blob/main/EXPLAINER.md#privacy-considerations)
 a page must first be explicitly given access to the Bluetooth serial device that
 currently has a bonding relationship with the host. It cannot enumerate device
 attributes, and this access grant may be revoked by the user.
