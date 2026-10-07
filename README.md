@@ -1,20 +1,5 @@
 This repository hosts the [WebSerial Standard](https://serial.spec.whatwg.org/). It is one of [many web standards](https://spec.whatwg.org/) developed by the [WHATWG community](https://whatwg.org/).
 
-## Explainer
-
-Details about the API including example usage code snippets and its motivation, privacy, and security considerations are described in [EXPLAINER.md](./EXPLAINER.md). Extensions to this API to support connections to Bluetooth RFCOMM services are described in [EXPLAINER_BL
-UETOOTH.md](./EXPLAINER_BLUETOOTH.md).
-
-## Implementation Status
-
-This API has three implementations: [Blink](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/serial/), [Gecko](https://github.com/mozilla-firefox/firefox/tree/main/dom/webserial), and [a polyfill](https://github.com/google/web-serial-polyfill/).
-
-The Blink implementation is available in browsers based on Chromium 89 and later, such as Google Chrome and Microsoft Edge. Individual Chromium-based browsers may choose to enable or disable this API. The initial release was limited to desktop OSes (Windows, macOS, Linux, and ChromeOS) however as of Chromium 148 this API is available on Android-based devices as well.
-
-The Gecko implementation is available in browsers based on Firefox 151 and later on desktop OSes (Windows, macOS, and Linux).
-
-The polyfill implementation is based on the WebUSB API and currently only supports standard USB communications class devices but could be expanded to support other proprietary USB to serial adapters. It could also be expanded to support Bluetooth Low Energy UARTs via the Web Bluetooth API.
-
 ## Code of conduct
 
 We are committed to providing a friendly, safe, and welcoming environment for all. Please read and respect the [Code of Conduct](https://whatwg.org/code-of-conduct).
@@ -46,3 +31,18 @@ A dashboard showing the tests running against browser engines can be seen at [wp
 ## Building "locally"
 
 For quick local iteration, run `make`; this will use a web service to build the standard, so that you don't have to install anything. See more in the [Contributor Guidelines](https://github.com/whatwg/meta/blob/main/CONTRIBUTING.md#building).
+
+## Explainer
+
+Details about the API including example usage code snippets and its motivation, privacy, and security considerations are described in [EXPLAINER.md](./EXPLAINER.md). Extensions to this API to support connections to Bluetooth RFCOMM services are described in [EXPLAINER_BL
+UETOOTH.md](./EXPLAINER_BLUETOOTH.md).
+
+## Implementation Status
+
+This API has three implementations: [Blink](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/serial/), [Gecko](https://github.com/mozilla-firefox/firefox/tree/main/dom/webserial), and [a polyfill](https://github.com/google/web-serial-polyfill/).
+
+The Blink implementation is available in browsers based on Chromium 89 and later, such as Google Chrome and Microsoft Edge. Individual Chromium-based browsers may choose to enable or disable this API. The initial release was limited to desktop OSes (Windows, macOS, Linux, and ChromeOS) however as of Chromium 148 this API is available on Android-based devices as well.
+
+The Gecko implementation is available in browsers based on Firefox 151 and later on desktop OSes (Windows, macOS, and Linux).
+
+The polyfill implementation is based on the WebUSB API and currently only supports standard USB communications class devices but could be expanded to support other proprietary USB to serial adapters. It could also be expanded to support Bluetooth Low Energy UARTs via the Web Bluetooth API.
