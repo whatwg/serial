@@ -527,7 +527,7 @@ The {{SerialPort/open()}} method steps are:
 
 <xmp class="idl">
 dictionary SerialOptions {
-  [EnforceRange] required unsigned long baudRate;
+  required [EnforceRange] unsigned long baudRate;
   [EnforceRange] octet dataBits = 8;
   [EnforceRange] octet stopBits = 1;
   ParityType parity = "none";
