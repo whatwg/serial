@@ -10,6 +10,9 @@ Abstract:
   also a companion <a href="https://github.com/whatwg/serial/blob/main/EXPLAINER.md">explainer</a>
   document.
 Markup Shorthands: css no, markdown yes
+Translation: ja https://jp.htmlspecs.com/serial/
+Translation: zh-Hans https://htmlspecs.com/serial/
+Translation: ko https://ko.htmlspecs.com/serial/
 </pre>
 
 <pre class="link-defaults">
@@ -527,7 +530,7 @@ The {{SerialPort/open()}} method steps are:
 
 <xmp class="idl">
 dictionary SerialOptions {
-  [EnforceRange] required unsigned long baudRate;
+  required [EnforceRange] unsigned long baudRate;
   [EnforceRange] octet dataBits = 8;
   [EnforceRange] octet stopBits = 1;
   ParityType parity = "none";
