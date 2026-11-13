@@ -1271,7 +1271,7 @@ class UUID</dfn> if the following steps return `true`:
     {{BluetoothUUID}}.{{BluetoothUUID/getService()}} with |serviceUuid|.
 1.  Let |blocklist| be the result of [=parsing the Bluetooth service class ID
     blocklist=] at
-    <a href="https://github.com/whatwg/serial/blob/main/bluetooth-service-blocklist.txt">https://github.com/whatwg/serial/blob/main/bluetooth-service-blocklist.txt</a>.
+    <a href="https://serial.spec.whatwg.org/bluetooth-service-blocklist.txt">https://serial.spec.whatwg.org/bluetooth-service-blocklist.txt</a>.
 1.  If |blocklist| [=list/contains=] |uuid|, return `true`.
 1.  If |uuid| [=string/is=] the [=Serial Port Profile service class ID=], return
     `false`.
