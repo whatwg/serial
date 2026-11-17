@@ -687,7 +687,7 @@ wait for the pipe chain to be closed when you want to close the port.
 
 <xmp highlight="js">
 lineReader.cancel();
-await streamClosed;
+await streamClosed.catch(() => {});
 await port.close();
 </xmp>
 
